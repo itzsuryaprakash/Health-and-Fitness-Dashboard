@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gym Workout Videos</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="css/workout_style.css">
+</head>
+
+<body ng-app="workoutApp" ng-controller="WorkoutController">
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#"><i class="fas fa-search"></i> Workout Search</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <select id="muscle-group" ng-model="selectedMuscleGroup">
+        <option value="">All</option>
+        <option value="Chest">Chest</option>
+        <option value="Legs">Legs</option>
+        <option value="Core">Core</option>
+        <option value="Biceps">Biceps</option>
+        <option value="Triceps">Triceps</option>
+      </select>
+
+      <!-- Workout Display Grid -->
+      <div class="workout-container">
+        <div class="workout-box" ng-repeat="workout in workouts | filter: { muscleGroup: selectedMuscleGroup }">
+          <div class="workout-media">
+            <img class="default-frame" ng-src="{{workout.static}}" alt="{{workout.title}}" />
+            <img class="gif" ng-src="{{workout.src}}" alt="{{workout.title}}" />
+          </div>
+          <div class="workout-name">{{workout.title}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Define AngularJS Application and Controller
+    const app = angular.module('workoutApp', []);
+
+    app.controller('WorkoutController', function ($scope) {
+      $scope.workouts = [
+        { "title": "Push Ups", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/06/Push-Up-Plus.gif", "static": "https://i.pinimg.com/736x/28/87/8d/28878d2dbe8caa961e44e82978a7a01e.jpg", "muscleGroup": "Chest" },
+        { "title": "Chest Press", "src": "https://i.pinimg.com/originals/c3/6f/c8/c36fc890d68c22d739de6cf9b221cc59.gif", "static": "https://i.pinimg.com/736x/02/0f/59/020f59a9ca772153895372fdc4575c2c.jpg", "muscleGroup": "Chest" },
+        { "title": "Incline Push Ups", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/06/Incline-Push-Up.gif", "static": "https://www.lyfta.app/thumbnails/04931201.jpg", "muscleGroup": "Chest" },
+        { "title": "Decline Push Ups", "src": "https://i.pinimg.com/originals/ea/0b/7c/ea0b7cf8fcbe26eb45cb17feeb27f815.gif", "static": "https://i.pinimg.com/736x/81/c0/e4/81c0e4f25779d681c9b6e418c3863b66.jpg", "muscleGroup": "Chest" },
+        { "title": "Chest Fly", "src": "https://newlife.com.cy/wp-content/uploads/2019/11/03081301-Dumbbell-Fly_Chest-FIX_360.gif", "static": "https://i.pinimg.com/736x/ba/0d/37/ba0d37033b6e339039b15d551d294641.jpg", "muscleGroup": "Chest" },
+        { "title": "Dumbbell Bench Press", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Press.gif", "static": "https://i.pinimg.com/736x/f8/a8/1f/f8a81f765a1f5cdd69341f8ea672606c.jpg", "muscleGroup": "Chest" },
+        { "title": "Cable Chest Press", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/High-Cable-Crossover.gif", "static": "https://i.pinimg.com/736x/bd/d0/8c/bdd08cc009b9e4a4bc9c4d59ff686689.jpg", "muscleGroup": "Chest" },
+        { "title": "Machine Chest Press", "src": "https://i.pinimg.com/originals/ab/3a/5e/ab3a5ec0613ad99ae6f196b9fce3bf5b.gif", "static": "https://i.pinimg.com/736x/12/22/81/1222818e854c6c5eac4bb7ee13682bfc.jpg", "muscleGroup": "Chest" },
+        { "title": "Squats", "src": "https://www.inspireusafoundation.org/wp-content/uploads/2021/06/bodyweight-squat-2.gif", "static": "https://i.pinimg.com/736x/93/ba/bd/93babd89201354f0585031e847368688.jpg", "muscleGroup": "Legs" },
+        { "title": "Lunges", "src": "https://fitnessprogramer.com/wp-content/uploads/2023/09/power-lunge.gif", "static": "https://i.pinimg.com/736x/ab/10/f7/ab10f73235d3fd3ed522602edbc4dc6e.jpg", "muscleGroup": "Legs" },
+        { "title": "Leg Press", "src": "https://www.inspireusafoundation.org/wp-content/uploads/2022/10/leg-press.gif", "static": "https://i.pinimg.com/736x/9d/06/86/9d06860d5310b8d2d09c79cc5fb096ef.jpg", "muscleGroup": "Legs" },
+        { "title": "Leg Curls", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Leg-Curl.gif", "static": "https://i.pinimg.com/736x/6f/80/2d/6f802d1cc94f00dd554f17a1f1ea0512.jpg", "muscleGroup": "Legs" },
+        { "title": "Step Ups", "src": "https://www.inspireusafoundation.org/wp-content/uploads/2022/07/weighted-step-up.gif", "static": "https://cdn.shopify.com/s/files/1/1497/9682/files/2_cd0bbc74-38de-4c1e-b271-c8a5470c996e.png?v=1646657658", "muscleGroup": "Legs" },
+        { "title": "Bulgarian Split Squats", "src": "https://i.pinimg.com/originals/b5/7f/76/b57f76fb76b2f768f1e4bcdf18c2bfce.gif", "static": "https://i.pinimg.com/736x/e8/69/a9/e869a939b0a923ba3716fa1acabf66a9.jpg", "muscleGroup": "Legs" },
+        { "title": "Glute Bridge", "src": "https://fitnessprogramer.com/wp-content/uploads/2022/02/Banded-Glute-Bridge.gif", "static": "https://www.lyfta.app/thumbnails/29641201.jpg", "muscleGroup": "Legs" },
+        { "title": "Hip Thrust", "src": "https://i.pinimg.com/originals/a1/10/5a/a1105a644aa6126ccd361c5ee221fc30.gif", "static": "https://cdn.shopify.com/s/files/1/1497/9682/files/2_e562727d-09fe-4867-979f-6d99a9fc9ed5.jpg?v=1646658120", "muscleGroup": "Legs" },
+        { "title": "Planks", "src": "https://miro.medium.com/v2/resize:fit:1400/1*vhswuGdxvaw-jFxia_CSog.gif", "static": "https://i.pinimg.com/736x/7a/1f/da/7a1fda3ccd0f74e2d70df21e12d8449d.jpg", "muscleGroup": "Core" },
+        { "title": "Sit Ups", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Sit-ups.gif", "static": "https://static.strengthlevel.com/images/exercises/sit-ups/sit-ups-800.jpg", "muscleGroup": "Core" },
+        { "title": "Leg Raises", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Lying-Leg-Raise.gif", "static": "https://i.pinimg.com/736x/6e/95/9e/6e959e3f08d55e4743947d9438986195.jpg", "muscleGroup": "Core" },
+        { "title": "Russian Twists", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Russian-Twist.gif", "static": "https://i.pinimg.com/originals/29/cc/60/29cc60440f178920df1774a616517292.png", "muscleGroup": "Core" },
+        { "title": "Mountain Climbers", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Mountain-climber.gif", "static": "https://i.pinimg.com/736x/b5/b0/3a/b5b03aac5d08554b6957bcc309129516.jpg", "muscleGroup": "Core" },
+        { "title": "Bicep Curls", "src": "https://i.pinimg.com/originals/7d/3c/de/7d3cdeed84c1c19ad372d5b25beffd08.gif", "static": "https://i.pinimg.com/736x/07/75/39/0775399ae278f46b7ff33fcb8ee48adb.jpg", "muscleGroup": "Biceps" },
+        { "title": "Hammer Curls", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Hammer-Curl.gif", "static": "https://i.pinimg.com/736x/1b/55/a6/1b55a670baadd4bb5b45be2a44d5bf65.jpg", "muscleGroup": "Biceps" },
+        { "title": "Concentration Curls", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Concentration-Curl.gif", "static": "https://i.pinimg.com/736x/07/75/39/0775399ae278f46b7ff33fcb8ee48adb.jpg", "muscleGroup": "Biceps" },
+        { "title": "Barbell Curl", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Curl.gif", "static": "https://i.pinimg.com/736x/60/d0/88/60d08887aab2a40efe94c21a20b7b695.jpg", "muscleGroup": "Biceps" },
+        { "title": "Preacher Curl", "src": "https://i.pinimg.com/originals/b6/ea/17/b6ea17377640b9bb77068888388b5d0a.gif", "static": "https://i.pinimg.com/736x/2a/fe/da/2afeda0687a3e335c41339ddcf704813.jpg", "muscleGroup": "Biceps" },
+        { "title": "Incline Dumbbell Curl", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Seated-Incline-Dumbbell-Curl.gif", "static": "https://i.pinimg.com/736x/df/7a/58/df7a5823bdc7ef794e50c154a34edd0c.jpg", "muscleGroup": "Biceps" },
+        { "title": "Cable Bicep Curl", "src": "https://framerusercontent.com/images/5CYOB76TShbBfLZwo71P2GcfPdQ.gif", "static": "https://i.pinimg.com/736x/27/0f/61/270f61813ad0664e30df018cefc5d51d.jpg", "muscleGroup": "Biceps" },
+        { "title": "Tricep Kickbacks", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Bent-Over-Triceps-Kickback.gif", "static": "https://i.pinimg.com/736x/16/d3/f9/16d3f9039494e8228ef7e1d7e0170a4a.jpg", "muscleGroup": "Triceps" },
+        { "title": "Overhead Tricep Extension", "src": "https://i.pinimg.com/originals/64/9e/18/649e1806d69d83d5a69942b6067eec41.gif", "static": "https://i.pinimg.com/736x/6e/9d/62/6e9d62d9b05754cd42d4790e562e03a2.jpg", "muscleGroup": "Triceps" },
+        { "title": "Close Grip Bench Press", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Close-Grip-Bench-Press.gif", "static": "https://i.pinimg.com/736x/55/41/3a/55413abf0529da8efebcc2affc8a0337.jpg", "muscleGroup": "Triceps" },
+        { "title": "Cable Tricep Pushdowns", "src": "https://www.inspireusafoundation.org/wp-content/uploads/2022/11/cable-pushdown.gif", "static": "https://i.pinimg.com/736x/e3/a7/77/e3a777e6cac013cfda0fe83416c75b06.jpg", "muscleGroup": "Triceps" },
+        { "title": "Skull Crushers", "src": "https://i.pinimg.com/originals/85/8b/58/858b585e01e9f4575076c5d5adc7733f.gif", "static": "https://i.pinimg.com/736x/1b/d2/92/1bd2926ba40ee6b9265ccec2d125b2ec.jpg", "muscleGroup": "Triceps" },
+        { "title": "Diamond Push Ups", "src": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Diamond-Push-up.gif", "static": "https://cdn.shopify.com/s/files/1/1497/9682/files/1.What_Are_Diamond_Push-Ups_How_to_Do_It.jpg?v=1673013889", "muscleGroup": "Triceps" },
+        { "title": "Tricep Machine Press", "src": "https://i.pinimg.com/originals/6a/63/59/6a6359a5a95dbbc8cf21755e7e959588.gif", "static": "https://i.pinimg.com/736x/32/64/eb/3264ebb5c01b8e88417ededcd01b89bb.jpg", "muscleGroup": "Triceps" }
+      ]
+
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+/* General Body Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+/* Sidebar Styles */
+#sidebar {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: #000000; /* Black sidebar */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Shadow for separation */
+}
+
+#sidebar .sidebar-heading {
+  padding: 20px;
+  background-color: #000000; /* Black background for heading */
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#sidebar .list-group-item {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 15px;
+  border: none;
+  background-color: transparent;
+
+  font-size: 16px;
+}
+
+#sidebar .list-group-item i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+#sidebar .list-group-item.active {
+  background-color: #ffffff; /* White background for active items */
+  color: #000000; /* Black text for active items */
+  font-weight: bold;
+}
+
+/* Main Content Area */
+#wrapper {
+  display: flex;
+}
+
+#page-content-wrapper {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  padding: 20px;
+  background-color: #ffffff; /* White background for content */
+  color: #000000; /* Black text */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Button to Toggle Mode */
+#mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #000000; /* Black button */
+  color: #ffffff; /* White text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#mode-toggle:hover {
+  background-color: #ffffff; /* White button on hover */
+  color: #000000; /* Black text */
+}
+
+/* Charts Section */
+#charts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.chart-box {
+  background-color: #ffffff; /* White background for chart boxes */
+  border: 2px solid #000000; /* Black border for each chart box */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  flex: 1 1 calc(33% - 20px);
+  min-width: 250px;
+}
+
+.chart-box canvas {
+  width: 100%;
+  height: 300px;
+}
+
+/* Workout Form Section */
+#workout-form-container {
+  margin-top: 40px;
+  gap: 20px;
+  display: block;
+}
+
+.tracking-box,
+.tracked-log-box {
+  background-color: #ffffff; /* White background for tracking boxes */
+  padding: 20px;
+  border: 2px solid #000000; /* Black border for tracking boxes */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.tracking-box h3,
+.tracked-log-box h3 {
+  color: #000000; /* Black text for headings */
+  font-weight: bold;
+  margin-bottom: 15px; /* Add space between heading and content */
+}
+
+/* Workout Form Inputs */
+#workout-form .form-group {
+  margin-bottom: 20px;
+}
+
+#sets-inputs .set-input {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+#set-inputs .set-input input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #000000; /* Black border for inputs */
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000; /* Black text inside inputs */
+}
+
+#workout-form .btn-primary {
+  background-color: #000000; /* Black button */
+  border-color: #000000;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: #ffffff; /* White text */
+}
+
+#workout-form .btn-primary:hover {
+  background-color: #444444; /* Darker black on hover */
+}
+
+/* Tracked Workouts Table */
+#exercise-tables {
+  margin-top: 20px;
+}
+
+#exercise-tables table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+#exercise-tables th,
+#exercise-tables td {
+  padding: 10px;
+  border: 1px solid #000000; /* Black border for table */
+}
+
+#exercise-tables th {
+  background-color: #000000; /* Black header for tables */
+  color: white;
+  font-weight: bold;
+}
+
+#exercise-tables td {
+  background-color: #ffffff; /* White background for table rows */
+  color: #000000; /* Black text */
+}
